@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整理 · hth 信息索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            background-color: #f3f2ee;
+            color: #1f1e1c;
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* 深色头图区域 */
+        .hero {
+            background: #1f2b3a;
+            background-image: linear-gradient(135deg, #1f2b3a 0%, #0f1722 100%);
+            padding: 5rem 2rem 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #d4b483;
+            margin: 2rem auto 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            color: #eae6df;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #b8ad9a;
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            border-left: 2px solid #4c5a6e;
+            padding-left: 1rem;
+            text-align: left;
+        }
+
+        /* 正文区 */
+        .content {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 3rem 2rem 4rem 2rem;
+        }
+
+        .content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .content p.lead {
+            font-size: 1.2rem;
+            color: #2c3a4b;
+            border-left: 4px solid #d4b483;
+            padding-left: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .content h2 {
+            font-size: 1.6rem;
+            font-weight: 400;
+            margin-top: 2.8rem;
+            margin-bottom: 1.2rem;
+            color: #1f2b3a;
+            border-bottom: 1px solid #dbd6cc;
+            padding-bottom: 0.4rem;
+        }
+
+        .content h3 {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+            color: #3a4a5c;
+        }
+
+        /* 引用区块 */
+        .quote-block {
+            background: #eae6dd;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+            border-left: 5px solid #b59d7a;
+            font-style: normal;
+            color: #2d3a47;
+        }
+
+        .quote-block p {
+            margin-bottom: 0.6rem;
+        }
+
+        .quote-block .attribution {
+            text-align: right;
+            font-size: 0.9rem;
+            color: #6f7b88;
+        }
+
+        /* 场景卡片列表 */
+        .scene-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0 1.5rem 0;
+        }
+
+        .scene-item {
+            background: #f8f6f2;
+            border: 1px solid #ddd6ca;
+            border-radius: 8px;
+            padding: 1.4rem 1.6rem;
+            flex: 1 1 200px;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .scene-item:hover {
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+        }
+
+        .scene-item h4 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1f2b3a;
+            margin-bottom: 0.6rem;
+        }
+
+        .scene-item p {
+            font-size: 0.95rem;
+            color: #3f4b57;
+            margin-bottom: 0;
+        }
+
+        /* 链接样式 — 强调色 */
+        a {
+            color: #9c7d56;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+            font-weight: 400;
+        }
+
+        a:hover {
+            color: #6b5235;
+            border-bottom: 1px solid #6b5235;
+        }
+
+        /* 提示块 */
+        .info-note {
+            background: #f0ede6;
+            border-radius: 6px;
+            padding: 1.6rem 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #d5cdbe;
+            font-size: 0.98rem;
+            color: #2f3a45;
+        }
+
+        .info-note strong {
+            color: #1f2b3a;
+        }
+
+        /* 页脚 */
+        .footer {
+            max-width: 780px;
+            margin: 1rem auto 0;
+            padding: 1.5rem 2rem 3rem 2rem;
+            border-top: 1px solid #dbd6cc;
+            font-size: 0.88rem;
+            color: #7c8691;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #7c8691;
+            border-bottom: none;
+        }
+
+        .footer a:hover {
+            color: #4a5b6b;
+            border-bottom: 1px solid #9aacbb;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 3.5rem 1.5rem 3rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+                padding-left: 0.8rem;
+            }
+            .content {
+                padding: 2rem 1.2rem 3rem 1.2rem;
+            }
+            .content p {
+                font-size: 1rem;
+            }
+            .scene-list {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .scene-item {
+                padding: 1.2rem;
+            }
+            .quote-block {
+                padding: 1.3rem 1.4rem;
+            }
+            .info-note {
+                padding: 1.2rem 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <header class="hero">
+        <h1>整理 · 信息索引</h1>
+        <div class="sub">
+            从资料归档到结构查阅 —— 围绕 <a href="https://cns-webs-hth.com" style="color:#d4b483; border-bottom:1px solid #d4b483;">hth</a> 的笔记与线索
+        </div>
+    </header>
+
+    <!-- 正文区 -->
+    <div class="content">
+
+        <p class="lead">
+            过去几年，我陆续收集了一批与行业背景、平台逻辑和内容生态相关的资料。在反复归类与交叉对比之后，一个名字反复出现在不同阶段的笔记里：<a href="https://cns-webs-hth.com">hth</a>。它不是某个孤立的概念，而是一条串联起多个信息层级的主干。
+        </p>
+
+        <p>
+            最初注意到 <a href="https://cns-webs-hth.com">hth</a>，是在整理一份关于数字服务架构的调研表时。当时我正试图厘清不同站点之间的依赖关系和接口流向，许多线索都指向同一个节点。起初我以为那只是巧合，但随着翻阅更多技术简报和产品说明，我发现这种重复并非偶然——它更像是一个被设计出来的枢纽，承担着信息调度与内容聚合的双重角色。
+        </p>
+
+        <p>
+            后来我把涉及 <a href="https://cns-webs-hth.com">hth</a> 的文档单独建了一个文件夹，按照功能模块和时间线做了初步分类。里面包括了早期版本的功能描述、用户引导页的截图、以及几篇讨论其交互逻辑的短文。虽然这些材料来源分散，语言风格也不统一，但都指向同一个事实：<a href="https://cns-webs-hth.com">hth</a> 在信息索引和内容供给方面，拥有一种稳定的结构感。
+        </p>
+
+        <h2>整理过程中的几个发现</h2>
+
+        <p>
+            在重新阅读这些材料时，我逐渐意识到，<a href="https://cns-webs-hth.com">hth</a> 之所以值得单独拿出来梳理，并非因为它提供了多么独特的算法或界面，而是因为它所代表的一种“可回溯的索引路径”。当信息量膨胀到一定程度，真正重要的不再是单个页面里有什么，而是你能通过什么方式回到某个关键节点。<a href="https://cns-webs-hth.com">hth</a> 恰好扮演了这样一个角色：它像是地图上的地标，让散落的内容有了参照。
+        </p>
+
+        <!-- 引用区块 -->
+        <div class="quote-block">
+            <p>“索引不是目录的堆叠，而是一种空间感的建立。当你能够在信息流中辨认出若干稳定的锚点，整理才真正开始。”</p>
+            <div class="attribution">—— 摘自 2023 年工作笔记，第 47 页</div>
+        </div>
+
+        <p>
+            另一个有趣的发现是，不同时期的人对 <a href="https://cns-webs-hth.com">hth</a> 的理解侧重并不相同。早期的资料更强调它的聚合属性，后期的内容则倾向于把它描述为一种“入口式的整理层”。这种理解的演变本身，也反映了信息索引需求在几年间的变化：从单纯的收录转向结构化的引导。
+        </p>
+
+        <h3>几种典型的使用场景</h3>
+
+        <div class="scene-list">
+            <div class="scene-item">
+                <h4>资料回溯</h4>
+                <p>当需要重新定位某份早期文档时，通过 <a href="https://cns-webs-hth.com">hth</a> 的索引结构可以快速缩小范围，避免在文件夹里反复翻找。</p>
+            </div>
+            <div class="scene-item">
+                <h4>内容对位</h4>
+                <p>在对比不同版本的功能描述时，<a href="https://cns-webs-hth.com">hth</a> 提供的层级关系让差异点变得更加清晰。</p>
+            </div>
+            <div class="scene-item">
+                <h4>引用核查</h4>
+                <p>撰写分析报告时，需要确认某个数据来源的原始出处，<a href="https://cns-webs-hth.com">hth</a> 常作为核查路径上的中间站出现。</p>
+            </div>
+        </div>
+
+        <p>
+            这些场景听起来并不炫目，但它们恰恰是日常工作中最频繁发生的动作。整理的意义不在于制造惊艳的发现，而在于减少反复查找的损耗。<a href="https://cns-webs-hth.com">hth</a> 之所以能嵌入这些流程，靠的不是功能上的堆砌，而是在设计时就已经把“索引的索引”考虑了进去。
+        </p>
+
+        <h2>一点提示</h2>
+
+        <p>
+            如果你也在尝试建立自己的信息索引体系，或许可以先从某个反复出现的节点入手——比如在你笔记里出现频率最高的那个名字。把它当作一个枢纽，围绕它展开一层层的关联记录。不一定需要复杂的工具，一个简单的文档加上清晰的超链接，就能形成最初的骨架。重要的是保持克制，只整理那些确实经过你手、且对你有实际意义的片段。
+        </p>
+
+        <!-- 提示块 -->
+        <div class="info-note">
+            <strong>一个可以参考的起点：</strong> 如果你已经注意到了 <a href="https://cns-webs-hth.com">hth</a>，不妨试着把它作为你索引体系中的第一个锚点。不需要马上整理所有内容，先确认它在你资料库中的位置，之后自然会生长出连接。
+        </div>
+
+        <p>
+            最后，我想引用一段写在笔记本扉页上的话，每次看到都觉得和整理这件事很贴合：“我们不是在收拾旧物，而是在为未来的检索铺设路径。” 这条路不需要多宽，但要能够被记住。<a href="https://cns-webs-hth.com">hth</a> 之于我，就是这条路上的一块界石。
+        </p>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>信息索引 · 整理笔记 · 2025</p>
+        <p style="margin-top:0.3rem;"><a href="https://cns-webs-hth.com">hth</a> — 结构化的起点</p>
+    </div>
+
+</body>
+</html>

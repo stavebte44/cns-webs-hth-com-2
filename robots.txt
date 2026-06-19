@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://stavebte44.github.io/cns-webs-hth-com-2/sitemap.xml
